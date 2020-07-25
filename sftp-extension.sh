@@ -14,3 +14,8 @@ sudo apt-get install blobfuse -y
 # Create temp path for open files (with sftp account)
 sudo mkdir /mnt/resource/blobfusetmp -p
 sudo chown sftp /mnt/resource/blobfusetmp
+
+# Install .net core runtime
+sudo apt-get install -y apt-transport-https && \
+sudo apt-get update && \
+sudo apt-get install -y aspnetcore-runtime-3.1
