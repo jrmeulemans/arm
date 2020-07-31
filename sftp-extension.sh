@@ -22,3 +22,17 @@ sudo apt-get install -y aspnetcore-runtime-3.1
 
 # Create /sftp directory
 sudo mkdir /sftp
+
+# Create blobfuse.service config file
+
+VAR1="rjiB+NNtKDmbnmimEpJ7F4igKVaHu1iGjwlqPWRc7TnsnNEStJHUWmtPIDe9hvgpDtVFbequs64txg8fTNhDvg=="
+sudo wget https://raw.githubusercontent.com/jrmeulemans/arm/master/blobfuse.service
+sudo sed -i 's+PARAM1+/sftp+g' blobfuse.service
+sudo sed -i 's+PARAM2+sftp+g' blobfuse.service
+sudo sed -i 's+PARAM3+sftp0001+g' blobfuse.service
+sudo sed -i "s/PARAM4/$VAR1/g" blobfuse.service
+
+# Set up systemd
+sudo cp blobfuse.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl start blobfuse.service
