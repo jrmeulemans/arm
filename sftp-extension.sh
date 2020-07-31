@@ -19,3 +19,6 @@ sudo chown sftp /mnt/resource/blobfusetmp
 sudo apt-get install -y apt-transport-https && \
 sudo apt-get update && \
 sudo apt-get install -y aspnetcore-runtime-3.1
+
+# Create /sftp directory
+sudo mkdir /sftp
