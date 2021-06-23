@@ -29,3 +29,5 @@ sudo cat <<EOT >> /var/www/html/index.html
   </body>
 </html>
 EOT
+
+sudo service apache2 start
