@@ -13,20 +13,24 @@ sudo service apache2 stop
 sudo rm /var/www/html/index.html
 sudo touch /var/www/html/index.html
 
-sudo cat <<EOT >> /var/www/html/index.html
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>OTEEMO WEB</title>
-    <style type="text/css" media="screen">
-    </style>
-  </head>
-  <body>
-    <div class="main_page">
-        <b>WEB SERVER: JRMUBU</b>
-    </div>
-  </body>
+# HOSTNAME VAR
+HOST=$(hostname)
+
+# HELLO WORLD
+cat <<EOT >> /var/www/html/index.html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+</style>
+</head>
+<body>
+  <h1>Hello World.</h1>
+  <p>Server Hostname: ${HOST}</p>
+</body>
 </html>
 EOT
 
