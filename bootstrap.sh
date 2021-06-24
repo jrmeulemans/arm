@@ -5,8 +5,11 @@ curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
 sudo apt-add-repository https://packages.microsoft.com/ubuntu/18.04/prod
 sudo apt-get update -y
 
-# Install nginx/apache
+# Install apache
 sudo apt install apache2 -y
+
+# Install Stress
+sudo apt-get install stress -y
 
 # /var/www/html/index.html
 sudo service apache2 stop
@@ -34,4 +37,10 @@ div {text-align: center;}
 </html>
 EOT
 
+# Schedule Stress Job
+sudo su -
+sudo echo "*/30 * * * *  root    stress --cpu 1 --timeout 480" >> /etc/crontab
+
+# Restart Services
 sudo service apache2 start
+sudo service cron reload
